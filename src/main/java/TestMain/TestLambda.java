@@ -2,6 +2,7 @@ package TestMain;
 
 import lambda.Greeting;
 import lambda.Greeting_multiple;
+import lambda.Greeting_return;
 
 public class TestLambda  {
 
@@ -38,9 +39,18 @@ public class TestLambda  {
             }
         };*/
 
+        //lambdas can return values too
+        Greeting_return greeting_return = (name) -> name.toUpperCase();
+
+        //above can also changed to any variable name
+        Greeting_return greeting_return1 = (x) -> x.toUpperCase();
+
+
         GoodMorning.greet("Shiva");
         GoodEvening.greet("Shiva");
         moreOperations.greet("shiva");
         moreParams.greet("shiva","subramaniam",100);
+        System.out.println(greeting_return.greet("shiva"));
+        System.out.println(greeting_return1.greet("drish"));
     }
 }
