@@ -13,3 +13,7 @@ multiple parameters - more than one parameters can be passed to lambda with ()
 
 Return Values - Lambda can also return values like a function
 
+functional programming - it should not depend on any variable
+
+function as first class objects - assigning a function to a variable 
+
