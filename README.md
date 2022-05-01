@@ -137,7 +137,8 @@ The above table reference is taken from Vinoth Selvaraj blog (https://www.vinsgu
   
   sample code below
   
-  private static final Supplier<WebDriver> chromeSupplier = () -> {
+    
+    private static final Supplier<WebDriver> chromeSupplier = () -> {
         System.setProperty("webdriver.chrome.driver","D:\\Technology\\Tools\\drivers\\chrome\\chromedriver.exe");
         return new ChromeDriver();
     };
@@ -158,4 +159,21 @@ The above table reference is taken from Vinoth Selvaraj blog (https://www.vinsgu
         return MAP.get(Browser).get();
     }
   
+  
+  2. The Consumer Interface is a part of the java.util.function package which has been introduced since Java 8, to implement functional programming in Java. It represents a function which takes in one argument and produces a result. However these kind of functions don’t return any value.
+Hence this functional interface which takes in one generic namely:- 
+ 
+
+T: denotes the type of the input argument to the operation
+The lambda expression assigned to an object of Consumer type is used to define its accept() which eventually applies the given operation on its argument. Consumers are useful when it not needed to return any value as they are expected to operate via side-effects. 
+ 
+
+Functions in Consumer Interface
+The Consumer interface consists of the following two functions:
+ 
+
+1. accept()
+  
+  Consumer<String> c = (s) -> System.out::println;
+  c.accept("sample"); 
   
