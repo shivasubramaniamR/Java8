@@ -118,3 +118,44 @@ main () {
 The above table reference is taken from Vinoth Selvaraj blog (https://www.vinsguru.com/vinoth-selvaraj/)
   
   
+  Functional Interfaces
+  ----------------------
+  
+  1. Supplier - The Supplier Interface is a part of the java.util.function package which has been introduced since Java 8, to implement functional programming in Java. It represents a function which does not take in any argument but produces a value of type T.
+  
+  The Supplier interface consists of only one function:
+
+1. get()
+          Supplier<Double> randomValue = () -> Math.random();
+          Supplier<Double> randomValue = Math::random;
+  
+  
+        // Print the random value using get()
+        System.out.println(randomValue.get());
+  
+  it is useful in implemeting the driver factory in test automation 
+  
+  sample code below
+  
+  private static final Supplier<WebDriver> chromeSupplier = () -> {
+        System.setProperty("webdriver.chrome.driver","D:\\Technology\\Tools\\drivers\\chrome\\chromedriver.exe");
+        return new ChromeDriver();
+    };
+
+    private  static final Supplier<WebDriver> firefoxsupplier = () -> {
+        System.setProperty("webdriver.gecko.driver","D:\\Technology\\Tools\\drivers\\firefox\\geckodriver.exe");
+        return new FirefoxDriver();
+    };
+
+    private static Map<String,Supplier<WebDriver>> MAP = new HashMap<>();
+
+    static {
+        MAP.put("chrome",chromeSupplier);
+        MAP.put("firefox",firefoxsupplier);
+    }
+
+    public static WebDriver getDriver(String Browser) {
+        return MAP.get(Browser).get();
+    }
+  
+  
