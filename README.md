@@ -177,3 +177,11 @@ The Consumer interface consists of the following two functions:
   Consumer<String> c = (s) -> System.out::println;
   c.accept("sample"); 
   
+  
+  
+  
+  
+  
+  
+  ![Functional Interface](https://user-images.githubusercontent.com/67018853/166186192-4d2c62d0-b5a8-48e6-835d-147fc3243790.png)
+
