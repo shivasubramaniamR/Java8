@@ -187,5 +187,107 @@ The Consumer interface consists of the following two functions:
   
   image taken from https://www.waytoeasylearn.com/learn/supplier-functional-interface/
   
-  
+  Java 8 Streams
+1) What Are Streams?
+Streams can be defined as a sequences of elements from a source which support data processing operations. You can treat streams as operations on data. You will get to know as you go through this article.
 
+2) Why Streams?
+Almost every Java application use Collections API to store and process the data. Despite being the most used Java API, it is not easy to write the code for even some common data processing operations like filtering, finding, matching, sorting, mapping etc using Collections API . So, there needed Next-Gen API to process the data. So Java API designers have come with Java 8 Streams API to write more complex data processing operations with much of ease.
+
+3) Characteristics Of Java 8 Streams
+3.1) Streams are not the data structures
+Streams doesn’t store the data. You can’t add or remove elements from streams. Hence, they are not the data structures. They are the just operations on data.
+
+3.2) Stream Consumes a data source
+Stream consumes a source, performs operations on it and produces the result. Source may be a collection or an array or an I/O resource. Remember, stream doesn’t modify the source.
+
+3.3) Intermediate And Terminal Operations
+Most of the stream operations return another new stream and they can be chained together to form a pipeline of operations.
+
+The operations which return stream themselves are called intermediate operations. For example – filter(), distinct(), sorted() etc.
+
+The operations which return other than stream are called terminal operations. count(). min(), max() are some terminal operations.
+
+3.4) Pipeline Of Operations
+A pipeline of operations consists of three things – a source, one or more intermediate operations and a terminal operation. Pipe-lining of operations let you to write database-like queries on a data source. In the below example, int array is the source, filter() and distinct() are intermediate operations and forEach() is a terminal operation.
+
+1
+IntStream.of(new int[] {4, 7, 1, 8, 3, 9, 7}).filter((int i) -> i > 5).distinct().forEach(System.out::println);
+3.5) Internal Iteration
+Collections need to be iterated explicitly. i.e you have to write the code to iterate over collections. But, all stream operations do the iteration internally behind the scene for you. You need not to worry about iteration at all while writing the code using Java 8 Streams API.
+
+3.6) Parallel Execution
+To gain the performance while processing the large amount of data, you have to process it in parallel and use multi core architectures. Java 8 Streams can be processed in parallel without writing any multi threaded code. For example, to process the collections in parallel, you just use parallelStream() method instead of stream() method.
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+List<String> names = new ArrayList<>();
+         
+names.add("David");
+         
+names.add("Johnson");
+         
+names.add("Samontika");
+         
+names.add("Brijesh");
+         
+names.add("John"); 
+         
+//Normal Execution
+         
+names.stream().filter((String name) -> name.length() > 5).skip(2).forEach(System.out::println);
+         
+//Parallel Execution
+         
+names.parallelStream().filter((String name) -> name.length() > 5).skip(2).forEach(System.out::println);
+3.7) Streams are lazily populated
+All elements of a stream are not populated at a time. They are lazily populated as per demand because intermediate operations are not evaluated until terminal operation is invoked.
+
+3.8) Streams are traversable only once
+You can’t traverse the streams more than once just like iterators. If you traverse the stream first time, it is said to be consumed.
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
+List<String> nameList = Arrays.asList("Dinesh", "Ross", "Kagiso", "Steyn");
+         
+Stream<String> stream = nameList.stream();
+         
+stream.forEach(System.out::println);
+         
+stream.forEach(System.out::println);    
+         
+//Error : stream has already been operated upon or closed
+3.9) Short Circuiting Operations
+Short circuiting operations are the operations which don’t need the whole stream to be processed to produce a result. For example – findFirst(), findAny(), limit() etc.
+  
+  ![terminalvsintermediate](https://user-images.githubusercontent.com/67018853/166392083-a388749a-bac2-4037-a4c9-680bd0baa5f3.png)
+
+  
+  ![Java8StreamIntermediateVsTerminalOperations](https://user-images.githubusercontent.com/67018853/166392140-61cb657b-73e3-4f96-8852-76c41d2d4ba2.png)
+
+  
+image  and streams content taken from https://www.waytoeasylearn.com/learn/supplier-functional-interface/
