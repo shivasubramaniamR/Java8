@@ -291,3 +291,19 @@ Short circuiting operations are the operations which don’t need the whole stre
 
   
 image  and streams content taken from https://www.waytoeasylearn.com/learn/supplier-functional-interface/
+  
+  Operation	Behaviour	Input Data Type	Example
+filter	Used for filtering Data	Predicate<T>	"filter(i -> i%2==0)
+filter(o -> Objects.nonNull(o)"
+map	Transforms the received data from one form to another	Function<T,R>	"map(i -> i*i)
+map(s->s.toUpperCase())
+map(b->DriverFactory.get(b)"
+limit	To limit the number of items that can flow through pipeline	long	limit(3)
+skip	Skip the first few items	long	skip(3)
+peek	Just for debugging	Consumer<T>	peek(i->System.out.println(i))
+distinct	Allows only distinct values in the pipeline	N/A	distinct()
+sorted	Sorts the data (Asc/Desc)	Comparator	"sorted(Comparator.naturalOrder())
+sorted(Comparator.reverseOrder())"
+flatMap	Flattens the data	Function<T,R>	
+![image](https://user-images.githubusercontent.com/67018853/166393549-d57f2a47-73c2-47e8-9d9c-8160e1f25b1d.png)
+
